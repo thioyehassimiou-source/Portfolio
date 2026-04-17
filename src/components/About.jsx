@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { personalInfo } from "../constants";
-import profileImg from "../assets/optimized/profile-univ-nobg.webp";
+import profileImg from "../assets/optimized/profile-final.webp";
 import { GraduationCap, Briefcase, Target, Heart, BookOpen, Languages } from "lucide-react";
 
 const traits = [

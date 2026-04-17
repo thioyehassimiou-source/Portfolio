@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { personalInfo } from "../constants";
 import { ArrowRight, MapPin, Code2, Layers } from "lucide-react";
-import profileImg from "../assets/optimized/profile-univ-nobg.webp";
+import profileImg from "../assets/optimized/profile-final.webp";
 
 /* ── Typing animation hook ── */
 function useTyping(words, speed = 100, pause = 2200) {
