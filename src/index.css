@@ -1,0 +1,417 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", "system-ui", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+/* === BASE === */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: "Space Grotesk", sans-serif;
+    @apply bg-[#050510] text-white antialiased text-[17px] leading-relaxed;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(99, 102, 241, 0.4);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050510;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+    border-radius: 99px;
+  }
+}
+
+/* === COMPONENTS === */
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 sm:px-10 lg:px-16;
+  }
+
+  /* === GRADIENT TEXT === */
+  .text-gradient {
+    background: linear-gradient(135deg, #818cf8 0%, #a78bfa 40%, #67e8f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #f472b6 0%, #c084fc 50%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* === CARDS === */
+  .card-glow {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: border-color 0.4s cubic-bezier(0.23,1,0.32,1),
+                transform 0.4s cubic-bezier(0.23,1,0.32,1),
+                box-shadow 0.4s cubic-bezier(0.23,1,0.32,1);
+  }
+  .card-glow:hover {
+    border-color: rgba(99, 102, 241, 0.45);
+    box-shadow:
+      0 0 0 1px rgba(99, 102, 241, 0.1),
+      0 0 40px rgba(99, 102, 241, 0.12),
+      0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: translateY(-4px);
+  }
+
+  /* Premium card with inner glow on hover */
+  .card-premium {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035) 0%,
+      rgba(255, 255, 255, 0.015) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(99, 102, 241, 0.1) 0%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .card-premium:hover::before {
+    opacity: 1;
+  }
+  .card-premium:hover {
+    border-color: rgba(99, 102, 241, 0.35);
+    box-shadow:
+      0 0 0 1px rgba(99, 102, 241, 0.08),
+      0 0 60px rgba(99, 102, 241, 0.1),
+      0 30px 80px rgba(0, 0, 0, 0.45);
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  /* === GLASS NAV === */
+  .glass-nav {
+    background: rgba(5, 5, 16, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 0 1px 0 rgba(99, 102, 241, 0.08);
+  }
+
+  /* === BUTTONS === */
+  .btn-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-weight: 600;
+    padding: 0.875rem 2.25rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.35s;
+    z-index: 0;
+  }
+  .btn-primary:hover::before { opacity: 1; }
+  .btn-primary:hover {
+    box-shadow:
+      0 0 0 4px rgba(99,102,241,0.15),
+      0 0 40px rgba(99,102,241,0.5),
+      0 10px 30px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
+  .btn-primary:active { transform: translateY(1px) scale(0.98); }
+  .btn-primary > * { position: relative; z-index: 1; }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    padding: 0.875rem 2.25rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+    border: 1px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.01em;
+  }
+  .btn-outline:hover {
+    border-color: rgba(99, 102, 241, 0.6);
+    background: rgba(99, 102, 241, 0.06);
+    box-shadow: 0 0 20px rgba(99,102,241,0.2);
+    transform: translateY(-2px);
+  }
+  .btn-outline:active { transform: translateY(1px) scale(0.98); }
+
+  /* === SECTION LABELS & HEADINGS === */
+  .section-label {
+    font-family: "Fira Code", monospace;
+    font-size: 0.88rem;
+    color: #818cf8;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, transparent);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    color: white;
+  }
+
+  /* === SKILL & PROGRESS BARS === */
+  .progress-bar {
+    height: 5px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.06);
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite linear;
+    position: relative;
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -1px;
+    width: 8px;
+    height: 7px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px rgba(99,102,241,0.9);
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* === SKILL TAG === */
+  .skill-tag {
+    font-family: "Fira Code", monospace;
+    font-size: 0.78rem;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+    transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+    cursor: default;
+  }
+  .skill-tag:hover {
+    background: rgba(99, 102, 241, 0.18);
+    border-color: rgba(99, 102, 241, 0.5);
+    color: #e0e7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px rgba(99,102,241,0.25);
+  }
+
+  /* === PROJECT CARD === */
+  .project-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(99,102,241,0.07) 0%,
+      transparent 50%,
+      rgba(139,92,246,0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .project-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow:
+      0 0 0 1px rgba(99,102,241,0.08),
+      0 0 60px rgba(99,102,241,0.12),
+      0 40px 80px rgba(0, 0, 0, 0.5);
+    transform: translateY(-10px);
+  }
+  .project-card:hover::after { opacity: 1; }
+
+  /* === FORM INPUT === */
+  .form-input {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 0.875rem;
+    padding: 1rem 1.25rem;
+    color: white;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+    resize: none;
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.2); }
+  .form-input:focus {
+    border-color: rgba(99, 102, 241, 0.7);
+    background: rgba(99, 102, 241, 0.04);
+    box-shadow:
+      0 0 0 3px rgba(99, 102, 241, 0.1),
+      0 0 20px rgba(99, 102, 241, 0.08);
+  }
+
+  /* === IMAGE GLOW === */
+  .img-glow {
+    box-shadow:
+      0 0 0 2px rgba(99, 102, 241, 0.2),
+      0 0 0 6px rgba(99, 102, 241, 0.08),
+      0 0 80px rgba(99, 102, 241, 0.3),
+      0 40px 100px rgba(0,0,0,0.6);
+  }
+
+  /* === CURSOR BLINK === */
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* === FLOAT ANIMATION === */
+  .float-anim {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+
+  /* === NOISE OVERLAY === */
+  .noise-bg::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+  }
+
+  /* === ORB === */
+  .orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* === GRADIENT LINE === */
+  .gradient-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(99, 102, 241, 0.6),
+      rgba(139, 92, 246, 0.6),
+      transparent
+    );
+  }
+
+  /* === TAG BADGE === */
+  .tag-badge {
+    font-size: 0.7rem;
+    font-family: "Fira Code", monospace;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.04em;
+  }
+
+  /* === FEATURED BADGE === */
+  .featured-badge {
+    font-size: 0.7rem;
+    font-family: "Fira Code", monospace;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(99,102,241,0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(165,180,252,0.3);
+    color: white;
+    letter-spacing: 0.04em;
+    box-shadow: 0 0 20px rgba(99,102,241,0.4);
+  }
+}
