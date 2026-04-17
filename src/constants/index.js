@@ -1,11 +1,11 @@
-import bcaImg from "../assets/bca-connect.png";
-import campusMobileImg from "../assets/campus-connect-mobile.png";
-import campusWebImg from "../assets/campus-connect-web.png";
-import guineaImg from "../assets/guinea-logement.png";
-import servilinkImg from "../assets/servilink-web.png";
-import heroImg from "../assets/eot-scolaire.png";
-import alphaDevImg from "../assets/alpha-dev.png";
-import ecoWasteImg from "../assets/eco-waste.png";
+import bcaImg from "../assets/optimized/bca-connect.webp";
+import campusMobileImg from "../assets/optimized/campus-connect-mobile.webp";
+import campusWebImg from "../assets/optimized/campus-connect-web.webp";
+import guineaImg from "../assets/optimized/guinea-logement.webp";
+import servilinkImg from "../assets/optimized/servilink-web.webp";
+import heroImg from "../assets/optimized/eot-scolaire.webp";
+import alphaDevImg from "../assets/optimized/alpha-dev.webp";
+import ecoWasteImg from "../assets/optimized/eco-waste.webp";
 
 export const personalInfo = {
   name: "Hassimiou Thioye",
