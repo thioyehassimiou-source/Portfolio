@@ -4,8 +4,6 @@ import campusWebImg from "../assets/optimized/campus-connect-web.webp";
 import guineaImg from "../assets/optimized/guinea-logement.webp";
 import servilinkImg from "../assets/optimized/servilink-web.webp";
 import heroImg from "../assets/optimized/eot-scolaire.webp";
-import alphaDevImg from "../assets/optimized/alpha-dev.webp";
-import ecoWasteImg from "../assets/optimized/eco-waste.webp";
 
 export const personalInfo = {
   name: "Hassimiou Thioye",
@@ -157,36 +155,7 @@ export const projects = [
     demo: "https://eot-web.vercel.app",
     featured: false,
   },
-  {
-    title: "Alpha-Dev Academy",
-    problem:
-      "L'apprentissage de la programmation en Guinée manque souvent de structures interactives et de suivi personnalisé pour les débutants.",
-    solution:
-      "Plateforme de e-learning spécialisée dans le dev, incluant des quiz, un suivi de progression en temps réel et des snippets de code interactifs.",
-    role: "Développeur Full Stack — Création du dashboard étudiant, système de progression et intégration des modules de cours.",
-    description:
-      "Espace numérique dédié à la formation des futurs développeurs guinéens, alliant théorie et pratique sur une interface moderne.",
-    tags: ["Next.js", "Tailwind CSS", "Supabase", "Education"],
-    image: alphaDevImg,
-    github: "#",
-    demo: "#",
-    featured: true,
-  },
-  {
-    title: "EcoWaste Guinea",
-    problem:
-      "La gestion des déchets et le recyclage sont des défis majeurs en milieu urbain guinéen, faute de systèmes de collecte organisés.",
-    solution:
-      "Application mobile de suivi de collecte utilisant la géolocalisation pour notifier les ramassages et récompenser le tri sélectif par des points.",
-    role: "Développeur Mobile Full Stack — Développement de l'interface Flutter, intégration de Maps et système de points utilisateur.",
-    description:
-      "Solution mobile innovante pour transformer la gestion des déchets à Labé en un système citoyen engagé et récompensé.",
-    tags: ["Flutter", "Node.js", "Google Maps", "Ecologie"],
-    image: ecoWasteImg,
-    github: "#",
-    demo: "#",
-    featured: true,
-  },
+
 ];
 
 export const experiences = [
@@ -195,7 +164,7 @@ export const experiences = [
     title: "Développeur indépendant",
     place: "Projets personnels & collaboratifs",
     description:
-      "Conception et développement de 8+ projets web et mobiles pour résoudre des problèmes concrets en Guinée. Chaque projet est une opportunité d'apprendre de nouvelles technologies et de livrer des solutions fonctionnelles.",
+      "Conception et développement de 6+ projets web et mobiles pour résoudre des problèmes concrets en Guinée. Chaque projet est une opportunité d'apprendre de nouvelles technologies et de livrer des solutions fonctionnelles.",
     type: "code",
   },
   {

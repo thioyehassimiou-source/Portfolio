@@ -96,7 +96,7 @@ const About = () => {
                 }}
                 className="absolute -right-2 sm:-right-4 top-12 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-3 sm:p-4 shadow-2xl z-20"
               >
-                <p className="text-2xl sm:text-3xl font-bold text-indigo-400">8+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-indigo-400">6+</p>
                 <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">
                   Projets réalisés
                 </p>
@@ -166,7 +166,7 @@ const About = () => {
               <p>
                 Ma démarche est simple : identifier un problème réel autour de
                 moi, puis concevoir une solution numérique pour le résoudre.
-                C'est comme ça que j'ai développé <span className="text-white font-bold">8 projets</span> en parallèle de
+                C'est comme ça que j'ai développé <span className="text-white font-bold">6 projets</span> en parallèle de
                 mes études — de la gestion académique au e-commerce, en passant
                 par l'immobilier et la mise en relation de services.
               </p>
