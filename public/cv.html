@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>CV - Hassimiou Thioye</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: #f9fafb; 
+      color: #111827; 
+      -webkit-print-color-adjust: exact;
+    }
+    .a4-page {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      margin: 20px auto;
+      padding: 20mm;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    h2 { 
+      font-size: 1.15rem; 
+      font-weight: 800; 
+      color: #4f46e5; 
+      margin-top: 1.5rem; 
+      margin-bottom: 0.75rem; 
+      border-bottom: 2px solid #e5e7eb; 
+      padding-bottom: 0.25rem; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em; 
+    }
+    p { margin: 0; }
+    
+    @media print {
+      body { background: white; }
+      .a4-page { width: 100%; height: 100%; margin: 0; padding: 0cm; box-shadow: none; }
+      @page { margin: 1cm; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <div class="a4-page relative">
+    
+    <!-- En-tête -->
+    <header class="mb-5 flex justify-between items-center border-b-2 border-gray-900 pb-5 gap-6">
+      
+      <!-- Photo de Profil -->
+      <div class="shrink-0 flex items-end">
+        <img src="./profile-cv.webp" alt="Hassimiou Thioye" class="w-32 h-32 object-cover object-top rounded-2xl border-[3px] border-indigo-100 shadow-sm">
+      </div>
+
+      <!-- Informations Nom & Rôle -->
+      <div class="flex-1">
+        <h1 class="text-[2.2rem] leading-[1.1] font-extrabold text-gray-900 tracking-tight uppercase">Hassimiou <span class="text-indigo-600">Thioye</span></h1>
+        <p class="text-[1.2rem] font-bold text-gray-700 mt-1">Développeur Full-Stack (Web & Mobile)</p>
+      </div>
+
+      <!-- Coordonnées -->
+      <div class="text-right text-[12.5px] text-gray-600 space-y-0.5 font-medium border-l border-gray-300 pl-4 shrink-0">
+        <p>thioyehassimiou@gmail.com</p>
+        <p>+224 624 19 30 69</p>
+        <p>github.com/thioyehassimiou-source</p>
+        <p>Labé, Guinée</p>
+      </div>
+    </header>
+
+    <!-- Résumé professionnel -->
+    <section class="mb-8">
+      <p class="text-gray-700 leading-relaxed text-[14.5px] font-medium text-justify">
+        Développeur orienté produit, spécialisé dans la conception d'applications robustes et performantes. Je transforme des problématiques métier complexes (logistique, éducation, immobilier) en solutions concrètes avec React, Node.js et Flutter. Curieux, structuré, et doté d'un fort leadership, avec un focus absolu sur la qualité du code et l'expérience utilisateur finale.
+      </p>
+    </section>
+
+    <!-- Grille 2 Colonnes -->
+    <div class="grid grid-cols-[1fr_2.2fr] gap-8">
+      
+      <!-- Colonne Gauche -->
+      <div class="space-y-7">
+        
+        <!-- Compétences -->
+        <section>
+          <h2 class="mt-0 text-[1.1rem]">Compétences</h2>
+          <div class="space-y-4 text-[13px]">
+            <div>
+              <p class="font-extrabold text-gray-900 mb-0.5 uppercase text-[11px] tracking-wide text-indigo-500">Frontend</p>
+              <p class="text-gray-800 font-semibold leading-snug">React & Next.js <span class="font-normal text-gray-500">(Intermédiaire)</span></p>
+              <p class="text-gray-800 font-semibold leading-snug">HTML5/CSS3, JavaScript <span class="font-normal text-gray-500">(Avancé)</span></p>
+              <p class="text-gray-800 font-semibold leading-snug">Tailwind CSS <span class="font-normal text-gray-500">(Avancé)</span></p>
+              <p class="text-gray-800 font-semibold leading-snug">Flutter Mobile <span class="font-normal text-gray-500">(Intermédiaire)</span></p>
+            </div>
+            <div>
+              <p class="font-extrabold text-gray-900 mb-0.5 uppercase text-[11px] tracking-wide text-indigo-500">Backend & BDD</p>
+              <p class="text-gray-800 font-semibold leading-snug">Node.js / Express <span class="font-normal text-gray-500">(Intermédiaire)</span></p>
+              <p class="text-gray-800 font-semibold leading-snug">Django / Python <span class="font-normal text-gray-500">(Intermédiaire)</span></p>
+              <p class="text-gray-800 font-semibold leading-snug">PostgreSQL, MySQL <span class="font-normal text-gray-500">(Intermédiaire)</span></p>
+              <p class="text-gray-800 font-semibold leading-snug">Supabase, API REST <span class="font-normal text-gray-500">(Avancé)</span></p>
+            </div>
+            <div>
+              <p class="font-extrabold text-gray-900 mb-0.5 uppercase text-[11px] tracking-wide text-indigo-500">Outils</p>
+              <p class="text-gray-600 font-medium leading-snug">Git/GitHub, IDE IA (Cursor, Windsurf), Figma (UI/UX)</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Formation -->
+        <section>
+          <h2 class="text-[1.1rem]">Formation</h2>
+          <div class="space-y-3 text-[13px]">
+            <div>
+              <p class="font-bold text-gray-900 leading-tight">Licence Informatique (L2)</p>
+              <p class="text-gray-600 font-medium">Université de Labé</p>
+              <p class="text-gray-400 italic text-[12px] mt-0.5">En cours (2023 – Présent)</p>
+            </div>
+            <div>
+              <p class="font-bold text-gray-900 leading-tight">Baccalauréat Sc. Mathématiques</p>
+              <p class="text-gray-600 font-medium">Mention Assez Bien</p>
+              <p class="text-gray-400 italic text-[12px] mt-0.5">Obtenu en 2024</p>
+            </div>
+            <div class="pt-2">
+              <p class="font-extrabold text-gray-900 mb-0.5 uppercase text-[11px] tracking-wide text-indigo-500">Certifications Officielles</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 font-medium text-[12.5px] mt-1">
+                <li>Intelligence Artificielle (AFD)</li>
+                <li>Marketing Digital (FODR)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Langues -->
+        <section>
+          <h2 class="text-[1.1rem]">Langues</h2>
+          <p class="text-[13px] text-gray-800 font-bold leading-relaxed">
+            Français <span class="text-gray-500 font-normal">(Courant)</span><br/>
+            Anglais <span class="text-gray-500 font-normal">(Technique / B1)</span><br/>
+            Pular, Malinké <span class="text-gray-500 font-normal">(Natif)</span>
+          </p>
+        </section>
+      </div>
+
+      <!-- Colonne Droite -->
+      <div class="space-y-7 pl-4 border-l border-gray-100">
+        
+        <!-- Expérience et Projets Phares -->
+        <section>
+          <h2 class="mt-0 text-[1.1rem]">Projets Techniques Impactants</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="font-bold text-gray-900 text-[15px]">BCA Connect — Plateforme Logistique B2B</h3>
+                <span class="text-[11px] font-mono bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded border border-indigo-100">React, Node.js, PostgreSQL</span>
+              </div>
+              <p class="text-[13.5px] text-gray-700 leading-relaxed text-justify mt-1.5">
+                <strong class="text-gray-900">Problème :</strong> Opacité et fragmentation extrême des chaînes d'approvisionnement.<br/>
+                <strong class="text-gray-900">Solution :</strong> Matchmaking automatisé entre acheteurs et transporteurs sécurisé par smart-tracking.
+                <br/><strong class="text-gray-900">Impact :</strong> Optimisation des flux et réduction des coûts opérationnels de 25% sur les tests pilotes.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="font-bold text-gray-900 text-[15px]">CampusConnect Mobile</h3>
+                <span class="text-[11px] font-mono bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded border border-indigo-100">Flutter, Supabase</span>
+              </div>
+              <p class="text-[13.5px] text-gray-700 leading-relaxed text-justify mt-1.5">
+                <strong class="text-gray-900">Problème :</strong> Difficulté d'accès instantané aux informations académiques pour 5000+ étudiants.<br/>
+                <strong class="text-gray-900">Solution :</strong> Application mobile avec cache offline et notifications push synchronisées.<br/>
+                <strong class="text-gray-900">Impact :</strong> Digitalisation du parcours étudiant et réduction du flux administratif physique.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="font-bold text-gray-900 text-[15px]">GuinéeLogement</h3>
+                <span class="text-[11px] font-mono bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded border border-indigo-100">Next.js, Django, API REST</span>
+              </div>
+              <p class="text-[13.5px] text-gray-700 leading-relaxed text-justify mt-1.5">
+                <strong class="text-gray-900">Problème :</strong> Accès difficile aux annonces immobilières fiables pour la population.<br/>
+                <strong class="text-gray-900">Solution :</strong> Portail digital avec filtrage multicritères et architecture Backend sécurisée.<br/>
+                <strong class="text-gray-900">Impact :</strong> Digitalisation du parcours de recherche de logement en Guinée.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="font-bold text-gray-900 text-[15px]">EOT — Éducation Transparente</h3>
+                <span class="text-[11px] font-mono bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded border border-indigo-100">React, Node.js, Firebase</span>
+              </div>
+              <p class="text-[13.5px] text-gray-700 leading-relaxed text-justify mt-1.5">
+                <strong class="text-gray-900">Problème :</strong> Manque de transparence scolaire et suivi parental insuffisant.<br/>
+                <strong class="text-gray-900">Solution :</strong> Système de notification automatique school-to-home pour les présences.<br/>
+                <strong class="text-gray-900">Impact :</strong> Réduction drastique de l'absentéisme non signalé.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="font-bold text-gray-900 text-[15px]">MedSync Pro</h3>
+                <span class="text-[11px] font-mono bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded border border-indigo-100">React, Node.js, PWA</span>
+              </div>
+              <p class="text-[13.5px] text-gray-700 leading-relaxed text-justify mt-1.5">
+                <strong class="text-gray-900">Problème :</strong> Gestion inefficace et perte des dossiers médicaux patients.<br/>
+                <strong class="text-gray-900">Solution :</strong> Système centralisé avec accès hors-connexion et synchronisation asynchrone.<br/>
+                <strong class="text-gray-900">Impact :</strong> Amélioration de la traçabilité médicale en zones à faible connectivité.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="font-bold text-gray-900 text-[15px]">AfriLearn AI</h3>
+                <span class="text-[11px] font-mono bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded border border-indigo-100">Next.js, Python, OpenAI</span>
+              </div>
+              <p class="text-[13.5px] text-gray-700 leading-relaxed text-justify mt-1.5">
+                <strong class="text-gray-900">Problème :</strong> Manque de suivi personnalisé pour les examens nationaux (Bac).<br/>
+                <strong class="text-gray-900">Solution :</strong> Assistant éducatif intelligent générant des parcours de révision sur-mesure.<br/>
+                <strong class="text-gray-900">Impact :</strong> Tutorat de qualité adapté au programme local grâce à l'IA.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Expérience & Engagement -->
+        <section>
+          <h2 class="text-[1.1rem]">Engagement & Leadership</h2>
+          <div class="space-y-5 text-[14px]">
+            
+            <div>
+              <div class="flex justify-between items-baseline mb-0.5">
+                <h3 class="font-bold text-gray-900 text-[15px]">Full Stack Developer (Freelance)</h3>
+                <span class="text-gray-500 font-bold text-[12px] bg-gray-100 px-2 py-0.5 rounded">Fin 2024 – Présent</span>
+              </div>
+              <p class="text-indigo-600 font-medium text-[13px] mb-1.5">Solutions Numériques & Impact Social</p>
+              <p class="text-[13.5px] text-gray-700 leading-snug text-justify">
+                Conception et livraison de 6+ applications web et mobiles répondant à des problématiques réelles : logistique, immobilier, éducation. Focus sur l'évolutivité et la performance.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline mb-0.5">
+                <h3 class="font-bold text-gray-900 text-[15px]">Leadership & Gestion de Groupe</h3>
+                <span class="text-gray-500 font-bold text-[12px] bg-gray-100 px-2 py-0.5 rounded">2023 – Présent</span>
+              </div>
+              <p class="text-indigo-600 font-medium text-[13px] mb-1.5">Université de Labé</p>
+              <p class="text-[13.5px] text-gray-700 leading-snug text-justify">
+                Coordination de projets académiques et relais administratif. Développement de compétences en gestion de crise et communication d'équipe.
+              </p>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bouton d'impression (Ne s'affiche pas à l'impression) -->
+  <div class="text-center py-10 print:hidden">
+    <button onclick="window.print()" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:bg-indigo-700 transition">
+      🖨️ Sauvegarder ce CV en PDF (Imprimer)
+    </button>
+    <p class="text-gray-500 text-sm mt-3">Utilisez l'option de votre navigateur "Enregistrer au format PDF".</p>
+  </div>
+</body>
+</html>

@@ -1,8 +1,10 @@
 import React from "react";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { skills } from "../constants";
-import { Code2, Server, Database, Wrench } from "lucide-react";
+import Code2 from "lucide-react/dist/esm/icons/code-2";
+import Server from "lucide-react/dist/esm/icons/server";
+import Database from "lucide-react/dist/esm/icons/database";
+import Wrench from "lucide-react/dist/esm/icons/wrench";
 
 const iconMap = {
   Frontend: Code2,
@@ -46,30 +48,12 @@ const colorMap = {
   },
 };
 
-function getLevelLabel(level) {
-  if (level >= 80) return "Avancé";
-  if (level >= 60) return "Intermédiaire";
-  if (level >= 40) return "En apprentissage";
-  return "Débutant";
-}
-
-/* Animated progress bar with entry trigger */
-function SkillBar({ level, colors }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  return (
-    <div ref={ref} className="progress-bar">
-      <motion.div
-        initial={{ width: 0 }}
-        animate={isInView ? { width: `${level}%` } : { width: 0 }}
-        transition={{ duration: 1.4, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
-        className={`progress-fill bg-gradient-to-r ${colors.fill}`}
-        style={{ backgroundSize: "200% 100%" }}
-      />
-    </div>
-  );
-}
+const statusColors = {
+  "Avancé": "text-indigo-300 bg-indigo-500/10 border-indigo-500/20",
+  "Intermédiaire": "text-emerald-300 bg-emerald-500/10 border-emerald-500/20",
+  "En apprentissage": "text-amber-300 bg-amber-500/10 border-amber-500/20",
+  "Débutant": "text-gray-400 bg-white/5 border-white/10",
+};
 
 const container = {
   hidden: {},
@@ -82,7 +66,7 @@ const card = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.7, ease: [0.23, 1, 0.32, 1] },
+    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
   },
 };
 
@@ -93,7 +77,7 @@ const techTags = [
 
 const Skills = () => {
   return (
-    <section id="competences" className="py-32 relative overflow-hidden">
+    <section id="competences" className="py-16 md:py-32 relative overflow-hidden">
       {/* Layered background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/8 to-transparent pointer-events-none" />
       <div className="orb w-[500px] h-[500px] bg-violet-600/10 bottom-0 left-0" />
@@ -105,20 +89,17 @@ const Skills = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           className="text-center mb-20"
         >
           <p className="section-label justify-center mb-4">
-            Compétences en construction
+            Expertise & Technologies
           </p>
           <h2 className="section-title mb-5">
-            Mon{" "}
-            <span className="text-gradient">stack technique</span>
+            Mon <span className="text-gradient">écosystème technique</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto leading-relaxed">
-            Les technologies que j'apprends et utilise dans mes projets.
-            Certaines sont solides, d'autres en progression — je suis
-            transparent sur mon niveau réel.
+            Une sélection de technologies que j'utilise pour concevoir des solutions scalables et performantes. Je privilégie la maîtrise réelle à l'accumulation d'outils.
           </p>
         </motion.div>
 
@@ -128,7 +109,7 @@ const Skills = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {skills.map((category) => {
             const colors = colorMap[category.category] || colorMap["Frontend"];
@@ -139,7 +120,7 @@ const Skills = () => {
                 key={category.category}
                 variants={card}
                 whileHover={{ y: -8, transition: { duration: 0.3, ease: [0.23,1,0.32,1] } }}
-                className="card-glow rounded-2xl p-6 group relative overflow-hidden"
+                className="card-glow rounded-2xl p-6 group relative overflow-hidden flex flex-col"
               >
                 {/* Subtle corner glow */}
                 <div
@@ -147,12 +128,11 @@ const Skills = () => {
                 />
 
                 {/* Category icon + label */}
-                <div className="flex items-center gap-3 mb-7 relative z-10">
+                <div className="flex items-center gap-3 mb-8 relative z-10 border-b border-white/5 pb-5">
                   <motion.div
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
-                    className={`w-11 h-11 rounded-xl ${colors.bg} border ${colors.border} flex items-center justify-center ${colors.text} shrink-0 transition-shadow group-hover:shadow-lg`}
-                    style={{ boxShadow: `0 0 0 0 ${colors.glow}` }}
+                    className={`w-11 h-11 rounded-xl ${colors.bg} border ${colors.border} flex items-center justify-center ${colors.text} shrink-0`}
                   >
                     <Icon size={20} />
                   </motion.div>
@@ -163,18 +143,18 @@ const Skills = () => {
                 </div>
 
                 {/* Skills list */}
-                <ul className="space-y-5 relative z-10">
-                  {category.items.map((skill, idx) => (
-                    <li key={skill.name}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-[17px] text-gray-200 font-semibold">
-                          {skill.name}
-                        </span>
-                        <span className={`text-sm font-mono ${colors.text} font-medium`}>
-                          {getLevelLabel(skill.level)}
-                        </span>
-                      </div>
-                      <SkillBar level={skill.level} colors={colors} />
+                <ul className="grid gap-3 relative z-10">
+                  {category.items.map((skill) => (
+                    <li 
+                      key={skill.name}
+                      className="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors group/item"
+                    >
+                      <span className="text-gray-200 font-medium group-hover/item:text-white transition-colors">
+                        {skill.name}
+                      </span>
+                      <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${statusColors[skill.status] || statusColors["Débutant"]}`}>
+                        {skill.status}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -188,7 +168,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="mt-16"
         >
           <div className="gradient-line mb-10" />

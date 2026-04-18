@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { languages, hobbies } from "../constants";
-import * as LucideIcons from "lucide-react";
+import Heart from "lucide-react/dist/esm/icons/heart";
+import MonitorPlay from "lucide-react/dist/esm/icons/monitor-play";
+import BookOpen from "lucide-react/dist/esm/icons/book-open";
+import Brain from "lucide-react/dist/esm/icons/brain";
+import Rss from "lucide-react/dist/esm/icons/rss";
+import Smile from "lucide-react/dist/esm/icons/smile";
+import Globe from "lucide-react/dist/esm/icons/globe";
+
+const iconMap = {
+  MonitorPlay,
+  BookOpen,
+  Brain,
+  Rss,
+  Heart,
+  Smile
+};
 
 /* Animated progress bar with glowing dot */
 function LangBar({ percentage, delay = 0 }) {
@@ -87,7 +101,7 @@ const Interests = () => {
             {/* Column title */}
             <motion.div variants={itemVariants} className="flex items-center gap-4 mb-10">
               <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
-                <LucideIcons.Globe size={22} />
+                <Globe size={22} />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">Langues parlées</h3>
@@ -156,7 +170,7 @@ const Interests = () => {
             {/* Column title */}
             <motion.div variants={itemVariants} className="flex items-center gap-4 mb-10">
               <div className="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 shrink-0">
-                <LucideIcons.Heart size={22} />
+                <Heart size={22} />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">Loisirs & Passions</h3>
@@ -168,7 +182,7 @@ const Interests = () => {
 
             <div className="grid sm:grid-cols-2 gap-4">
               {hobbies.map((hobby, idx) => {
-                const Icon = LucideIcons[hobby.icon] || LucideIcons.Smile;
+                const Icon = iconMap[hobby.icon] || iconMap.Smile;
                 const accent = ["indigo", "violet", "cyan", "emerald"][idx % 4];
                 const accentStyles = {
                   indigo: { bg: "bg-indigo-500/10", border: "border-indigo-500/20", text: "text-indigo-400", glow: "rgba(99,102,241,0.3)" },

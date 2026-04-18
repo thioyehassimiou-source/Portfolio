@@ -1,38 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useForm, ValidationError } from "@formspree/react";
 import { personalInfo } from "../constants";
-import { Mail, MessageCircle, Send, CheckCircle2, Loader2, MapPin, Clock } from "lucide-react";
+import Mail from "lucide-react/dist/esm/icons/mail";
+import MessageCircle from "lucide-react/dist/esm/icons/message-circle";
+import Send from "lucide-react/dist/esm/icons/send";
+import CheckCircle2 from "lucide-react/dist/esm/icons/check-circle-2";
+import Loader2 from "lucide-react/dist/esm/icons/loader-2";
+import MapPin from "lucide-react/dist/esm/icons/map-pin";
+import Clock from "lucide-react/dist/esm/icons/clock";
+import FileText from "lucide-react/dist/esm/icons/file-text";
+import Phone from "lucide-react/dist/esm/icons/phone";
 import { GithubIcon, LinkedinIcon, FacebookIcon } from "./SocialIcons";
 
 const Contact = () => {
-  const [status, setStatus] = useState("idle");
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
-  const [errors, setErrors] = useState({});
-
-  const validate = () => {
-    const e = {};
-    if (!formData.name.trim()) e.name = "Le nom est requis";
-    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = "Email invalide";
-    if (!formData.message.trim() || formData.message.length < 10) e.message = "Message trop court (min 10 caractères)";
-    return e;
-  };
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-    if (errors[id]) setErrors((prev) => ({ ...prev, [id]: "" }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
-    setStatus("submitting");
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 2000);
-  };
+  const [state, handleSubmit] = useForm("myklwolw");
 
   const infoItems = [
     {
@@ -48,6 +30,13 @@ const Contact = () => {
       value: "Envoyer un message",
       href: `https://wa.me/${personalInfo.whatsapp.replace(/\+/g, "")}`,
       color: "emerald",
+    },
+    {
+      icon: <Phone size={20} />,
+      label: "Téléphone",
+      value: "+224 624 19 30 69",
+      href: "tel:+224624193069",
+      color: "indigo",
     },
     {
       icon: <MapPin size={20} />,
@@ -73,7 +62,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-32 relative overflow-hidden">
       <div className="orb w-[500px] h-[500px] bg-violet-600/10 top-0 left-0" />
       <div className="orb w-[400px] h-[400px] bg-cyan-500/8 bottom-0 right-0" />
 
@@ -151,6 +140,18 @@ const Contact = () => {
                 <FacebookIcon size={18} />
               </a>
             </div>
+
+            {/* Resume CTA */}
+            <div className="pt-6">
+              <a
+                href="/cv.html"
+                target="_blank"
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-white/5 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-500/30 transition-all font-semibold text-white/90 group"
+              >
+                <FileText size={18} />
+                Voir mon CV complet
+              </a>
+            </div>
           </motion.div>
 
           {/* ── Right column: form ── */}
@@ -163,7 +164,7 @@ const Contact = () => {
           >
             <div className="card-glow rounded-2xl p-8">
               <AnimatePresence mode="wait">
-                {status === "success" ? (
+                {state.succeeded ? (
                   <motion.div
                     key="success"
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -177,12 +178,6 @@ const Contact = () => {
                     <p className="text-lg text-gray-300 mb-8">
                       Merci pour votre message. Je vous répondrai dans les plus brefs délais.
                     </p>
-                    <button
-                      onClick={() => setStatus("idle")}
-                      className="text-base text-indigo-400 hover:text-indigo-300 transition-colors underline underline-offset-4"
-                    >
-                      Envoyer un autre message
-                    </button>
                   </motion.div>
                 ) : (
                   <motion.form
@@ -193,61 +188,70 @@ const Contact = () => {
                     onSubmit={handleSubmit}
                     className="space-y-4"
                   >
+                    {state.errors && state.errors.length > 0 && !state.errors.some(e => e.field) && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="p-4 mb-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm"
+                      >
+                        Une erreur est survenue lors de l'envoi. Veuillez réessayer ou utiliser l'email direct.
+                      </motion.div>
+                    )}
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm text-gray-400 mb-1.5 font-medium">Nom complet *</label>
+                        <label htmlFor="name" className="block text-sm text-gray-400 mb-1.5 font-medium">Nom complet *</label>
                         <input
                           id="name"
+                          name="name"
                           type="text"
-                          value={formData.name}
-                          onChange={handleChange}
+                          required
                           className="form-input"
                           placeholder="Votre nom"
                         />
-                        {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
+                        <ValidationError prefix="Nom" field="name" errors={state.errors} className="text-red-400 text-xs mt-1" />
                       </div>
                       <div>
-                        <label className="block text-sm text-gray-400 mb-1.5 font-medium">Email *</label>
+                        <label htmlFor="email" className="block text-sm text-gray-400 mb-1.5 font-medium">Email *</label>
                         <input
                           id="email"
+                          name="email"
                           type="email"
-                          value={formData.email}
-                          onChange={handleChange}
+                          required
                           className="form-input"
                           placeholder="votre@email.com"
                         />
-                        {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
+                        <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-400 text-xs mt-1" />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs text-gray-400 mb-1.5">Objet</label>
+                      <label htmlFor="subject" className="block text-xs text-gray-400 mb-1.5">Objet</label>
                       <input
                         id="subject"
+                        name="subject"
                         type="text"
-                        value={formData.subject}
-                        onChange={handleChange}
                         className="form-input"
                         placeholder="Collaboration, projet, opportunité..."
                       />
+                      <ValidationError prefix="Objet" field="subject" errors={state.errors} className="text-red-400 text-xs mt-1" />
                     </div>
                     <div>
-                      <label className="block text-xs text-gray-400 mb-1.5">Message *</label>
+                      <label htmlFor="message" className="block text-xs text-gray-400 mb-1.5">Message *</label>
                       <textarea
                         id="message"
+                        name="message"
                         rows={5}
-                        value={formData.message}
-                        onChange={handleChange}
+                        required
                         className="form-input"
                         placeholder="Décrivez votre projet ou votre idée..."
                       />
-                      {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
+                      <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-400 text-xs mt-1" />
                     </div>
                     <button
                       type="submit"
-                      disabled={status === "submitting"}
+                      disabled={state.submitting}
                       className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      {status === "submitting" ? (
+                      {state.submitting ? (
                         <>
                           <Loader2 size={18} className="animate-spin" /> Envoi en cours...
                         </>

@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { personalInfo } from "../constants";
-import { ArrowRight, MapPin, Code2, Layers } from "lucide-react";
+import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
+import MapPin from "lucide-react/dist/esm/icons/map-pin";
+import Code2 from "lucide-react/dist/esm/icons/code-2";
+import Layers from "lucide-react/dist/esm/icons/layers";
+import FileText from "lucide-react/dist/esm/icons/file-text";
 import profileImg from "../assets/optimized/profile-final.webp";
 
 /* ── Typing animation hook ── */
-function useTyping(words, speed = 100, pause = 2200) {
+function useTyping(words, speed = 70, pause = 1500) {
   const [text, setText] = useState("");
   const [wordIdx, setWordIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
@@ -69,16 +73,15 @@ function Counter({ value, suffix = "" }) {
 }
 
 const roles = [
-  "Développeur Web & Mobile",
-  "Étudiant en Informatique",
-  "Apprenti Full Stack",
-  "Créateur de solutions digitales",
+  "Développeur Full-Stack",
+  "Spécialiste Web & Mobile",
+  "Orienté Produit & Impact",
 ];
 
 const stats = [
-  { value: 6, suffix: "+", label: "Projets réalisés" },
-  { value: 8, suffix: "+", label: "Technologies apprises" },
-  { value: 100, suffix: "%", label: "Motivation" },
+  { value: 6, suffix: "+", label: "Projets d'impact livrés" },
+  { value: 8, suffix: "+", label: "Technologies maîtrisées" },
+  { value: 1, suffix: " an", label: "Expérience en freelance" },
 ];
 
 const Hero = () => {
@@ -94,7 +97,7 @@ const Hero = () => {
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.23, 1, 0.32, 1] },
+      transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
     },
   };
 
@@ -166,21 +169,15 @@ const Hero = () => {
               </span>
             </motion.div>
 
-            {/* Bio — honest & personal */}
+            {/* Bio — professional & impact driven */}
             <motion.p
               variants={item}
-              className="text-gray-300 text-xl leading-relaxed max-w-xl mb-10"
+              className="text-gray-200 text-lg sm:text-xl leading-relaxed max-w-xl mb-10"
             >
-              Étudiant en{" "}
+              Je transforme des besoins métier complexes en produits numériques performants (SaaS, logistique, éducation). Ma stack de prédilection :{" "}
               <span className="text-white font-bold">
-                Licence 2 Informatique
-              </span>{" "}
-              à l'
-              <span className="text-white font-bold">
-                {personalInfo.university}
+                React, Node.js et Flutter.
               </span>
-              . Je construis des projets concrets pour apprendre, progresser et
-              créer des solutions utiles pour mon environnement en Guinée.
             </motion.p>
 
             {/* CTA */}
@@ -188,12 +185,13 @@ const Hero = () => {
               variants={item}
               className="flex flex-wrap gap-4 mb-14"
             >
-              <a href="#projets" className="btn-primary">
-                Découvrir mes projets
+              <a href="#projets" className="btn-primary border-2 border-indigo-500 shadow-lg shadow-indigo-500/25 px-6">
+                Voir mes projets
                 <ArrowRight size={18} />
               </a>
-              <a href="#contact" className="btn-outline">
-                Me contacter
+              <a href="/cv.html" target="_blank" className="btn-outline px-6 text-white border-white/20 hover:border-white/50 hover:bg-white/10 flex items-center gap-2">
+                <FileText size={18} />
+                Télécharger CV
               </a>
             </motion.div>
 
@@ -218,8 +216,8 @@ const Hero = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
-              duration: 1,
-              delay: 0.3,
+              duration: 0.6,
+              delay: 0.2,
               ease: [0.23, 1, 0.32, 1],
             }}
             className="order-1 lg:order-2 flex justify-center lg:justify-end relative"
@@ -301,7 +299,7 @@ const Hero = () => {
                 <div>
                   <p className="text-xs text-gray-400 leading-none">Profil</p>
                   <p className="text-sm font-semibold text-white mt-0.5">
-                    Étudiant L2
+                    Solutions Architect
                   </p>
                 </div>
               </motion.div>

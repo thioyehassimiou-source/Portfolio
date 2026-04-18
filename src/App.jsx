@@ -5,6 +5,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
+import Certifications from "./components/Certifications";
 import Interests from "./components/Interests";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -32,6 +33,10 @@ function App() {
         <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
       <Experience />
+      <div className="section-container">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
+      <Certifications />
       <div className="section-container">
         <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>

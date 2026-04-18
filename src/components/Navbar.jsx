@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { navLinks, personalInfo } from "../constants";
 import { cn } from "../utils/cn";
-import { Menu, X } from "lucide-react";
+import Menu from "lucide-react/dist/esm/icons/menu";
+import X from "lucide-react/dist/esm/icons/x";
 import { GithubIcon, LinkedinIcon, FacebookIcon } from "./SocialIcons";
 
 const Navbar = () => {
@@ -123,8 +124,8 @@ const Navbar = () => {
             </div>
 
             {/* Contact CTA */}
-            <a href="#contact" className="hidden md:flex btn-primary py-2 px-5 text-sm">
-              Contactez-moi
+            <a href="#contact" className="hidden md:flex btn-primary py-2 px-5 text-sm border border-indigo-500/50 shadow-lg shadow-indigo-500/20 font-semibold hover:shadow-indigo-500/30">
+              Travaillons ensemble
             </a>
 
             {/* Mobile hamburger */}

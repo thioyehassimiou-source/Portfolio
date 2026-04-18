@@ -1,7 +1,8 @@
 import React from "react";
 import { personalInfo } from "../constants";
 import { GithubIcon, LinkedinIcon, FacebookIcon } from "./SocialIcons";
-import { Mail, ArrowUp } from "lucide-react";
+import Mail from "lucide-react/dist/esm/icons/mail";
+import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 
 const Footer = () => {
   return (

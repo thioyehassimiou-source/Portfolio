@@ -2,38 +2,43 @@ import React from "react";
 import { motion } from "framer-motion";
 import { personalInfo } from "../constants";
 import profileImg from "../assets/optimized/profile-final.webp";
-import { GraduationCap, Briefcase, Target, Heart, BookOpen, Languages } from "lucide-react";
+import GraduationCap from "lucide-react/dist/esm/icons/graduation-cap";
+import Briefcase from "lucide-react/dist/esm/icons/briefcase";
+import Target from "lucide-react/dist/esm/icons/target";
+import Heart from "lucide-react/dist/esm/icons/heart";
+import BookOpen from "lucide-react/dist/esm/icons/book-open";
+import Languages from "lucide-react/dist/esm/icons/languages";
 
 const traits = [
   {
-    icon: <GraduationCap size={18} />,
-    label: "Formation",
-    value: "Licence 2 Informatique — Université de Labé",
-  },
-  {
     icon: <Briefcase size={18} />,
-    label: "Orientation",
-    value: "Développement Web & Mobile Full Stack",
+    label: "Spécialisation",
+    value: "Développement Full Stack — Web & Mobile",
   },
   {
     icon: <Target size={18} />,
-    label: "Objectif",
-    value: "Devenir développeur full stack performant et créer des outils utiles en Guinée",
+    label: "Approche",
+    value: "Architecture centrée sur l'utilisateur et la performance",
+  },
+  {
+    icon: <Target size={18} />,
+    label: "Engagement",
+    value: "Transformer des besoins métier en outils scalables",
   },
   {
     icon: <Heart size={18} />,
-    label: "Motivation",
-    value: "Apprendre en construisant des projets concrets qui résolvent de vrais problèmes",
+    label: "Valeurs",
+    value: "Code propre, documentation rigoureuse et impact réel",
   },
   {
     icon: <BookOpen size={18} />,
-    label: "Loisirs",
-    value: "Séries, Lecture, Développement personnel",
+    label: "Veille",
+    value: "Exploration constante des architectures Cloud & JS",
   },
   {
     icon: <Languages size={18} />,
     label: "Langues",
-    value: "Français (Courant), Anglais (Intermédiaire)",
+    value: "Français (Natif), Anglais (Technique/B1)",
   },
 ];
 
@@ -47,13 +52,13 @@ const itemVariants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
+    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
   },
 };
 
 const About = () => {
   return (
-    <section id="a-propos" className="py-32 relative overflow-hidden">
+    <section id="a-propos" className="py-16 md:py-32 relative overflow-hidden">
       <div className="orb w-[500px] h-[500px] bg-indigo-600/10 top-0 -right-40" />
 
       <div className="section-container">
@@ -72,7 +77,7 @@ const About = () => {
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 aspect-[3/4] max-w-sm mx-auto bg-gradient-to-t from-indigo-900/50 to-[#050510]/50">
                 <img
                   src={profileImg}
-                  alt={`${personalInfo.name} — Étudiant développeur`}
+                  alt={`${personalInfo.name} — Développeur Full Stack`}
                   className="w-full h-full object-contain object-bottom scale-110"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#050510]/80 to-transparent" />
@@ -81,7 +86,7 @@ const About = () => {
                     {personalInfo.name}
                   </p>
                   <p className="text-indigo-300 text-base font-mono">
-                    Étudiant développeur · L2 Informatique
+                    Développeur Full-Stack · Product Mindset
                   </p>
                 </div>
               </div>
@@ -138,46 +143,32 @@ const About = () => {
               variants={itemVariants}
               className="section-title mb-6"
             >
-              Un étudiant qui{" "}
-              <span className="text-gradient">construit pour apprendre</span>
+              Concevoir des solutions qui{" "}
+              <span className="text-gradient">font la différence</span>
             </motion.h2>
-
             <motion.div
               variants={itemVariants}
-              className="space-y-6 text-gray-300 text-xl leading-relaxed mb-10"
+              className="text-gray-300 text-lg sm:text-xl leading-relaxed mb-10"
             >
-              <p>
-                Je suis{" "}
-                <span className="text-white font-bold">
-                  {personalInfo.name}
-                </span>
-                , étudiant en{" "}
-                <span className="text-white font-bold">
-                  Licence 2 Informatique
-                </span>{" "}
-                à l'
-                <span className="text-white font-bold">
-                  {personalInfo.university}
-                </span>
-                . Je ne suis pas un développeur senior — je suis un étudiant
-                passionné qui apprend chaque jour en construisant des projets
-                concrets.
+              <p className="mb-6">
+                Je suis <span className="text-white font-bold">{personalInfo.name}</span>, Développeur Full-Stack passionné. Mon approche se résume à une exigence : transformer une idée brute en un{" "}
+                <span className="text-white font-bold">produit numérique fiable.</span>
               </p>
-              <p>
-                Ma démarche est simple : identifier un problème réel autour de
-                moi, puis concevoir une solution numérique pour le résoudre.
-                C'est comme ça que j'ai développé <span className="text-white font-bold">6 projets</span> en parallèle de
-                mes études — de la gestion académique au e-commerce, en passant
-                par l'immobilier et la mise en relation de services.
-              </p>
-              <p>
-                Mon objectif : devenir un{" "}
-                <span className="text-white font-bold">
-                  développeur Full Stack compétent
-                </span>
-                , capable de concevoir des solutions complètes qui ont un
-                impact réel en Guinée et au-delà.
-              </p>
+              
+              <ul className="space-y-4 text-base sm:text-lg">
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 font-bold">⚡</span>
+                  <span><strong className="text-gray-200">Qualité du Code :</strong> Architecture robuste centrée autour de React, Node.js et Django.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 font-bold">🎯</span>
+                  <span><strong className="text-gray-200">Orientation Produit :</strong> Je développe des outils qui résolvent de vrais problèmes (scalabilité et performance).</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-indigo-400 font-bold">💡</span>
+                  <span><strong className="text-gray-200">Expérience Utilisateur :</strong> Des interfaces intuitives pour un impact réel.</span>
+                </li>
+              </ul>
             </motion.div>
 
             {/* Trait cards */}
